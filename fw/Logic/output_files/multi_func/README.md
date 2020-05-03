@@ -1,0 +1,1 @@
+Use this firmware for SNES [Multi Region Boards](https://github.com/borti4938/SNES-AddOn-PCBs/tree/master/MultiRegion_with_DeJitter_QID) of version V20190813 (and later).

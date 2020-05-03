@@ -1,0 +1,238 @@
+Analysis & Synthesis report for multi_func_legacy
+Mon Aug 19 20:59:40 2019
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Parameter Settings for Inferred Entity Instance: snes_dejitter_mod:dejitter_u|lpm_counter:h_cnt_rtl_0
+  9. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++-----------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Mon Aug 19 20:59:40 2019           ;
+; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name               ; multi_func_legacy                               ;
+; Top-level Entity Name       ; snes_mult_func                                  ;
+; Family                      ; MAX7000AE                                       ;
+; Total macrocells            ; 31                                              ;
+; Total pins                  ; 24                                              ;
++-----------------------------+-------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                     ;
++----------------------------------------------------------------------------+------------------+-------------------+
+; Option                                                                     ; Setting          ; Default Value     ;
++----------------------------------------------------------------------------+------------------+-------------------+
+; Device                                                                     ; EPM7032AETC44-10 ;                   ;
+; Top-level entity name                                                      ; snes_mult_func   ; multi_func_legacy ;
+; Family name                                                                ; MAX7000AE        ; Cyclone IV GX     ;
+; Use smart compilation                                                      ; Off              ; Off               ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On               ; On                ;
+; Enable compact report table                                                ; Off              ; Off               ;
+; Create Debugging Nodes for IP Cores                                        ; Off              ; Off               ;
+; Preserve fewer node names                                                  ; On               ; On                ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off              ; Off               ;
+; Verilog Version                                                            ; Verilog_2001     ; Verilog_2001      ;
+; VHDL Version                                                               ; VHDL_1993        ; VHDL_1993         ;
+; State Machine Processing                                                   ; Auto             ; Auto              ;
+; Safe State Machine                                                         ; Off              ; Off               ;
+; Extract Verilog State Machines                                             ; On               ; On                ;
+; Extract VHDL State Machines                                                ; On               ; On                ;
+; Ignore Verilog initial constructs                                          ; Off              ; Off               ;
+; Iteration limit for constant Verilog loops                                 ; 5000             ; 5000              ;
+; Iteration limit for non-constant Verilog loops                             ; 250              ; 250               ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On               ; On                ;
+; Infer RAMs from Raw Logic                                                  ; On               ; On                ;
+; Parallel Synthesis                                                         ; On               ; On                ;
+; NOT Gate Push-Back                                                         ; On               ; On                ;
+; Power-Up Don't Care                                                        ; On               ; On                ;
+; Remove Duplicate Registers                                                 ; On               ; On                ;
+; Ignore CARRY Buffers                                                       ; Off              ; Off               ;
+; Ignore CASCADE Buffers                                                     ; Off              ; Off               ;
+; Ignore GLOBAL Buffers                                                      ; Off              ; Off               ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off              ; Off               ;
+; Ignore LCELL Buffers                                                       ; Auto             ; Auto              ;
+; Ignore SOFT Buffers                                                        ; Off              ; Off               ;
+; Limit AHDL Integers to 32 Bits                                             ; Off              ; Off               ;
+; Optimization Technique                                                     ; Speed            ; Speed             ;
+; Allow XOR Gate Usage                                                       ; On               ; On                ;
+; Auto Logic Cell Insertion                                                  ; On               ; On                ;
+; Parallel Expander Chain Length                                             ; 4                ; 4                 ;
+; Auto Parallel Expanders                                                    ; On               ; On                ;
+; Auto Open-Drain Pins                                                       ; On               ; On                ;
+; Auto Resource Sharing                                                      ; Off              ; Off               ;
+; Maximum Fan-in Per Macrocell                                               ; 100              ; 100               ;
+; Use LogicLock Constraints during Resource Balancing                        ; On               ; On                ;
+; Ignore translate_off and synthesis_off directives                          ; Off              ; Off               ;
+; Report Parameter Settings                                                  ; On               ; On                ;
+; Report Source Assignments                                                  ; On               ; On                ;
+; Report Connectivity Checks                                                 ; On               ; On                ;
+; HDL message level                                                          ; Level2           ; Level2            ;
+; Suppress Register Optimization Related Messages                            ; Off              ; Off               ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000             ; 5000              ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000             ; 5000              ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100              ; 100               ;
+; Block Design Naming                                                        ; Auto             ; Auto              ;
+; Synthesis Effort                                                           ; Auto             ; Auto              ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On               ; On                ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off              ; Off               ;
+; Analysis & Synthesis Message Level                                         ; Medium           ; Medium            ;
+; Disable Register Merging Across Hierarchies                                ; Auto             ; Auto              ;
+; Synthesis Seed                                                             ; 1                ; 1                 ;
++----------------------------------------------------------------------------+------------------+-------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                    ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                      ; Library ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------+---------+
+; rtl/snes_mult_func.v             ; yes             ; User Verilog HDL File  ; d:/Users/Peter/Documents/Workspaces/Git/snes_dejitter/rtl/snes_mult_func.v        ;         ;
+; rtl/snes_dejitter_mod.v          ; yes             ; User Verilog HDL File  ; d:/Users/Peter/Documents/Workspaces/Git/snes_dejitter/rtl/snes_dejitter_mod.v     ;         ;
+; lpm_counter.tdf                  ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/lpm_counter.tdf         ;         ;
+; lpm_constant.inc                 ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/lpm_constant.inc        ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc          ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc         ;         ;
+; cmpconst.inc                     ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/cmpconst.inc            ;         ;
+; lpm_compare.inc                  ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/lpm_compare.inc         ;         ;
+; lpm_counter.inc                  ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/lpm_counter.inc         ;         ;
+; dffeea.inc                       ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/dffeea.inc              ;         ;
+; alt_counter_stratix.inc          ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/alt_counter_stratix.inc ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction           ; c:/intelfpga_lite/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc          ;         ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++----------------------+----------------------+
+; Resource             ; Usage                ;
++----------------------+----------------------+
+; Logic cells          ; 31                   ;
+; Total registers      ; 21                   ;
+; I/O pins             ; 24                   ;
+; Shareable expanders  ; 1                    ;
+; Parallel expanders   ; 3                    ;
+; Maximum fan-out node ; MCLK_base_i          ;
+; Maximum fan-out      ; 22                   ;
+; Total fan-out        ; 245                  ;
+; Average fan-out      ; 4.38                 ;
++----------------------+----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                         ;
++-----------------------------------+------------+------+----------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node        ; Macrocells ; Pins ; Full Hierarchy Name                                                  ; Library Name ;
++-----------------------------------+------------+------+----------------------------------------------------------------------+--------------+
+; |snes_mult_func                   ; 31         ; 24   ; |snes_mult_func                                                      ; work         ;
+;    |snes_dejitter_mod:dejitter_u| ; 23         ; 0    ; |snes_mult_func|snes_dejitter_mod:dejitter_u                         ; work         ;
+;       |lpm_counter:h_cnt_rtl_0|   ; 11         ; 0    ; |snes_mult_func|snes_dejitter_mod:dejitter_u|lpm_counter:h_cnt_rtl_0 ; work         ;
++-----------------------------------+------------+------+----------------------------------------------------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: snes_dejitter_mod:dejitter_u|lpm_counter:h_cnt_rtl_0 ;
++------------------------+-------------------+----------------------------------------------------------+
+; Parameter Name         ; Value             ; Type                                                     ;
++------------------------+-------------------+----------------------------------------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                                               ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY                                             ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE                                             ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE                                           ;
+; LPM_WIDTH              ; 11                ; Untyped                                                  ;
+; LPM_DIRECTION          ; UP                ; Untyped                                                  ;
+; LPM_MODULUS            ; 0                 ; Untyped                                                  ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                                                  ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                                                  ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                                                  ;
+; DEVICE_FAMILY          ; MAX7000AE         ; Untyped                                                  ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                                                  ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH                                       ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK                                       ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                                                  ;
+; LABWIDE_SCLR           ; ON                ; Untyped                                                  ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                                                  ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                                                  ;
++------------------------+-------------------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Mon Aug 19 20:59:39 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off snes_dejitter -c multi_func_legacy
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/snes_mult_func.v
+    Info (12023): Found entity 1: snes_mult_func
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/snes_dejitter_mod.v
+    Info (12023): Found entity 1: snes_dejitter_mod
+Info (12127): Elaborating entity "snes_mult_func" for the top level hierarchy
+Info (12128): Elaborating entity "snes_dejitter_mod" for hierarchy "snes_dejitter_mod:dejitter_u"
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (19001): Inferred lpm_counter megafunction (LPM_WIDTH=11) from the following logic: "snes_dejitter_mod:dejitter_u|h_cnt_rtl_0"
+Info (12130): Elaborated megafunction instantiation "snes_dejitter_mod:dejitter_u|lpm_counter:h_cnt_rtl_0"
+Info (12133): Instantiated megafunction "snes_dejitter_mod:dejitter_u|lpm_counter:h_cnt_rtl_0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTH" = "11"
+    Info (12134): Parameter "LPM_DIRECTION" = "UP"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
+Info (280013): Promoted pin-driven signal(s) to global signal
+    Info (280014): Promoted clock signal driven by pin "MCLK_base_i" to global clock signal
+Info (21057): Implemented 56 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 16 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21063): Implemented 31 macrocells
+    Info (21073): Implemented 1 shareable expanders
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4573 megabytes
+    Info: Processing ended: Mon Aug 19 20:59:40 2019
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
