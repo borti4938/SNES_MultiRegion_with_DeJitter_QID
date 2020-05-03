@@ -102,7 +102,7 @@ U1, U2, U3 and U5 need a firmware flashed to the chip. U1 and U2 have to be prog
 
 
 - **U1:** PIC 16F630 microcontroller with - [SuperCIC-lock firmware](http://sd2snes.de/files/supercic.zip)
-- **U2:** PIC 16F684 microcontroller with [uIGR firmware](https://raw.githubusercontent.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/tree/master/fw/uIGR/snes_uigr_684_with_lock.hex)
+- **U2:** PIC 16F684 microcontroller with [uIGR firmware](https://raw.githubusercontent.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/master/fw/uIGR/snes_uigr_684_with_lock.hex)
 
 Use a PICKit, TL866CS or similar programmer.
 
@@ -111,8 +111,8 @@ Use a PICKit, TL866CS or similar programmer.
 
 - **U3:** EPM7032 CPLD with clock switch, region patch and de-jitter firmware. You have to choose the right one depending on your modding board version.
 
-  - [Version SMR20190813 (and later)](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/tree/master/fw/Logic/output_files/multi_func/multi_function.pof?raw=true)
-  - [Version SMR20190603 and earlier](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/tree/master/fw/Logic/output_files/multi_func_legacy/multi_func_legacy.pof?raw=true)
+  - [Version SMR20190813 (and later)](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/blob/master/fw/Logic/output_files/multi_func/multi_function.pof?raw=true)
+  - [Version SMR20190603 and earlier](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/blob/master/fw/Logic/output_files/multi_func_legacy/multi_func_legacy.pof?raw=true)
 
 Use an Altera USB Blaster (or clone) for flashing the firmware.
 
@@ -121,7 +121,7 @@ Use an Altera USB Blaster (or clone) for flashing the firmware.
 After assembly, the modding board has to be powered for flashing the firmware. This can be done by using the DFO programmer connected with V_target set to 5V (or 3.3V) if the modding board is not installed yet (other power solutions are possible, but please use the 5V power supply rail to not harm the DC converters. Or you can simply switch on the SNES for programming. Of course, the CPLD can be also flashed prior to assembly if you have a proper adapter at hand.
 
 
-- **U5:** CDCE913 with [appropriate configuration](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/tree/master/fw/dfo/clockpro/snes_multi_region.hex?raw=true)
+- **U5:** CDCE913 with [appropriate configuration](https://raw.githubusercontent.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/master/fw/dfo/clockpro/snes_multi_region.hex)
 
 ![](./pics/dfo_pcb.jpg)
 
@@ -132,9 +132,7 @@ Use the DFO programmer to flash the PLL. The [DFO readme](./fw/dfo/SOURCE.md) de
 
 #### Manufacturing the PCB
 
-You can choose any manufacturer which you prefer. All files for manufacturing including the design files are provided in subfolder [gerber/pcb/](./gerber/pcb/). As the PCB is designed in EAGLE (current version 7.4.2), gerbers are exported in the actual format. However, some services have problem while automatically analyze those like OSHPark or JCLPCB. Please try the older format in [gerber/pcb.eagle_legacy_export/](./gerber/pcb.eagle_legacy_export/).
-
-For using the OSHPark service, you can also look for my [uploaded project](https://oshpark.com/profiles/borti4938). (check version)
+You can choose any manufacturer which you prefer. All files for manufacturing including the design files are provided in subfolder [pcb/gerber/pcb/](./pcb/gerber/pcb/). As the PCB is designed in EAGLE (current version 7.4.2), gerbers are exported in the actual format. However, some services have problem while automatically analyze those like OSHPark or JCLPCB. Please try the older format in [pcb/gerber/pcb.eagle_legacy_export/](./pcb/gerber/pcb.eagle_legacy_export/).
 
 **IMPORTANT**
 Please use a substrate thickness of 0.8mm in order to make installation easier.
@@ -143,13 +141,13 @@ Please use a substrate thickness of 0.8mm in order to make installation easier.
 
 ##### Sourcing the Parts
 
-For sourcing the parts, please be referred to the [Bill Of Materials](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/tree/master/pcb/BOM.xlsx?raw=true)
+For sourcing the parts, please be referred to the [Bill Of Materials](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/blob/master/pcb/BOM.xlsx?raw=true)
 
 ##### Soldering
 
 The PCB is designed with having hand soldering in mind. Most complicated footprints are probably the 44TQFP package of the CPLD or the 14TSSOP of the CDCE913.
 
-However, if you plan to use a stencil, you can use the [stencil gerber file](./gerber/stencil/SNES_MR_DeJitter_QID.GTP). All SMDs are placed in top layer.
+However, if you plan to use a stencil, you can use the [stencil gerber file](./pcb/gerber/stencil/SNES_MR_DeJitter_QID.GTP). All SMDs are placed in top layer.
 
 **IMPORTANT**
 SuperCIC (PIC16F630-I/SL) and uIGR (PIC16F684-I/SL) need firmware flashed prior to soldering as mentioned later in this document.
