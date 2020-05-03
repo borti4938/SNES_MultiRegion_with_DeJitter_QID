@@ -1,0 +1,36 @@
+List of parts needed  
+====================  
+  
+common parts (both designs):  
+----------------------------  
+- 1x PIC16F630-I/SL (SOIC14 package; flashed with program for the SuperCIC-Lock)  
+- 1x PIC16F684-I/SL (SOIC14 package; flashed with program for the uIGR V2)  
+  
+- 74*27 (SOIC14 package; * = LS, HC or HCT family)  
+- 74*30 (SOIC14 package; * = LS, HC or HCT family)  
+- 74HC(T)125 (SOIC14 package; use HC or HCT family)  
+  
+- 5x 0.1uF ceramic capacitor (SMD 0805 package; rated 25V or more)  
+  
+- 2x 180 Ohms resistor (SMD 0805 package; 1/8 watts should be fine)  
+- 1x 10k Ohms resistor (SMD 0805 package; 1/8 watts should be fine)  
+  
+- 1x Dual-LED (replacement for the red LED; a red/green-LED with 5mm diffuse lens is recommended)  
+  
+additional parts for the 1Chip-SNES design:  
+-------------------------------------------  
+- 74*00 (SOIC14 package; * = LS, HC or HCT family)  
+- 74HCU04 (SOIC14 package; U = unbuffered!!!)  
+  
+- 4x 22pF ceramic capacitor (SMD 0805 package; rated 25V or more)  
+- 2x 0.1uF ceramic capacitor (SMD 0805 package; rated 25V or more)  
+  
+- 2x 330 Ohms resistor (SMD 0805 package; 1/8 watts should be fine)  
+- 2x 1M Ohms resistor (SMD 0805 package; 1/8 watts should be fine)  
+  
+- 1x 17.734475MHz crystal (HC49 package; either SMD or THT) [*]
+- 1x 21.477273MHz crystal (HC49 package; either SMD or THT) [*]  
+  
+  
+[*] Small Hint:  
+Isolate the bottom of the crystals if you use a THT resistor without an isolator attached. This avoids a short between both pins.  

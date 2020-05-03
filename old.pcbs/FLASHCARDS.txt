@@ -1,0 +1,18 @@
+A quick note regarding the region patching circuit on this modding PCB and flash-cards.
+
+In general, using flash-cards like the sd2snes, SuperEverdrive and PowerPak together with the region patching activated is not a good idea. I try to explain why!
+
+First of all, one has to understand how a region patch works. In the S-PPU2 register $213F bit 4 shows whether the SNES is running in NTSC-mode or in PAL-mode (set up using S-PPU2 pin 30 or S-CPUN pin 111). Many games are checking this register on start-up (or during the gameplay) and check the value on bit 4. NTSC-games expect a '0' and PAL-games a '1'. If the bit does not return the required value, the game ends with 'This gamepak is not designed for your SFC/SNES' or similar.
+A region patch observes the address bus B and recognizes a request of $213F. Then the patch forces on the data bus bit 4 GND or Vcc by simply 'beating'/'overdriving' the output of the S-PPU2.
+
+An important point is how the region patch 'knows' which value has to be written.
+On this modding PCB the SuperCIC-lock outputs the value on pin 3. The bit is determined using the CIC-key found on the cartridge. And this is the point where flash-cards become 'critical' for the region patch. As the SuperCIC-lock only checks the region of the cartridge using the CIC-key, the SuperCIC-lock CANNOT know which region the loaded ROM is. The overwritten value on bit 4 during a $213F request might be incorrect!
+As flash-cards have there own region patching (at least the sd2snes; I don't own a SuperEverdrive or PowerPak) you can simply switch of the region patch of the modding PCB (using Sel+L+R+Dw; LED-code: red-off-red).
+
+
+A very last remark to the sd2snes:
+As the SuperCIC-lock is part of the sd2snes project, there is another solution: the so-called 'Pairmode'.
+The pairmode is available with the firmware v0.1.7 preview 4 or later. In the Pairmode the SuperCIC-lock goes into a pairmode-loop with the sd2snes. In this loop, forced region, LED status and the ROM region is constantly updated.
+
+To change the forced region (and thus the LED-state) using the sd2snes (via the config.yml or the option GUI -> SuperCIC Settings), the uIGR has to be in the SuperCIC-mode (using Sel+L+R+Le / Sel+L+R+Ri) as the uIGR is master and the SuperCIC-lock slave regarding the region set to the SNES.
+As the ROM region is updated constantly, the region patch on the modding PCB can be left on. I recommend to switch the sd2snes-own region patch off in this case (via the config.yml or the option GUI -> In-game Settings).

@@ -1,0 +1,2 @@
+Firmware SuperCIC:   https://sd2snes.de/blog/cool-stuff/supercic  
+Firmware uIGR V2: https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/tree/master/fw/uIGR
