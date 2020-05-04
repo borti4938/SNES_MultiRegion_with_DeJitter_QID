@@ -83,4 +83,4 @@ set_false_path -from [get_ports {DEJITTER_BYPASS}]
 set_false_path -to [get_ports {CSYNC_o* MCLK_o}]
 
 
-set_false_path -to [get_ports ColorCarrier_o]
+set_false_path -to [get_ports {ColorCarrier_o ColorCarrier_opt_o}]

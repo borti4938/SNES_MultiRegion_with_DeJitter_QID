@@ -63,6 +63,7 @@ set_location_assignment PIN_12 -to NPALMODE[0]
 set_location_assignment PIN_37 -to MCLK_base_i
 set_location_assignment PIN_27 -to MCLK_PAL_ext_i
 set_location_assignment PIN_22 -to MCLK_o
+set_location_assignment PIN_19 -to ColorCarrier_opt_o
 set_location_assignment PIN_21 -to ColorCarrier_o
 
 set_location_assignment PIN_44 -to DEJITTER_BYPASS
