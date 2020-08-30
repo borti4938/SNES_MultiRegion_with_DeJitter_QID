@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.5.2">
+<eagle version="9.6.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -8065,7 +8065,7 @@ http://www.st.com&lt;p&gt;
 <part name="R54" library="rcl" deviceset="R-EU_" device="R0603" value="39"/>
 <part name="SJ62" library="jumper" deviceset="SJ" device="SMALL"/>
 <part name="CSYNC_I1" library="wirepad" deviceset="SMD2" device=""/>
-<part name="R92" library="rcl" deviceset="R-EU_" device="R0603" value="2k"/>
+<part name="R92" library="rcl" deviceset="R-EU_" device="R0603" value="6k19"/>
 <part name="R91" library="rcl" deviceset="R-EU_" device="R0603" value="4k7"/>
 <part name="R94" library="rcl" deviceset="R-EU_" device="R0603" value="75"/>
 <part name="GND34" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -8079,7 +8079,7 @@ http://www.st.com&lt;p&gt;
 <part name="+3V10" library="supply1" deviceset="+3V3" device=""/>
 <part name="C92" library="rcl" deviceset="C-EU" device="C0603" value="0.01u"/>
 <part name="SJ93" library="jumper" deviceset="SJ" device="SMALL"/>
-<part name="R93" library="rcl" deviceset="R-EU_" device="R0603" value="623"/>
+<part name="R93" library="rcl" deviceset="R-EU_" device="R0603" value="523"/>
 <part name="GND27" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SJ63A" library="jumper" deviceset="SJ" device="SMALL"/>
 <part name="SJ63B" library="jumper" deviceset="SJ" device="SMALL"/>
