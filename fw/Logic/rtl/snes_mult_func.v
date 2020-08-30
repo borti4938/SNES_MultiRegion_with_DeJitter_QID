@@ -44,8 +44,9 @@ module snes_mult_func(
   // Clock input and output
   input MCLK_base_i,    // base clock (either 21.47727MHz (NTSC) or 17.734475 (PAL))
   input MCLK_PAL_ext_i, // extended PAL base clock (21.28137MHz) for 3Chip consoles)
-  output MCLK_o,
+  output MCLK_o, 
   output ColorCarrier_o,
+  output ColorCarrier_opt_o,
 
   // De-Jitter
   input DEJITTER_BYPASS, // NTSC: DEJITTER_BYPASS = 0, PAL: DEJITTER_BYPASS = 1
@@ -82,10 +83,10 @@ assign CSYNC_o = {2{CSYNC_w}};
 
 // color carrier
 wire NPALMODE_w = ~PALMODE;
-reg ColorCarrier_int;
-reg [1:0] div_cnt;
+reg ColorCarrier_int, ColorCarrier_opt_int;
+reg [1:0] div_cnt, div_opt_cnt;
 
-always @(posedge MCLK_DEJ_w) begin
+always @(posedge MCLK_base_i) begin
   if (div_cnt[NPALMODE_w]) begin
     div_cnt <= 2'b00;
     ColorCarrier_int <= ~ColorCarrier_int;
@@ -93,8 +94,17 @@ always @(posedge MCLK_DEJ_w) begin
     div_cnt <= div_cnt + 1'b1;
   end
 end
+always @(posedge MCLK_DEJ_w) begin
+  if (div_opt_cnt[NPALMODE_w]) begin
+    div_opt_cnt <= 2'b00;
+    ColorCarrier_opt_int <= ~ColorCarrier_opt_int;
+  end else begin
+    div_opt_cnt <= div_opt_cnt + 1'b1;
+  end
+end
 
 assign ColorCarrier_o = ColorCarrier_int;
+assign ColorCarrier_opt_o = ColorCarrier_opt_int;
 assign NPALMODE = {2{NPALMODE_w}};
 
 `ifdef LEGACY

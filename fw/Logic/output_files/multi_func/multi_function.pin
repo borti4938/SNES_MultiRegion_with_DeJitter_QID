@@ -79,7 +79,7 @@ GND*                         : 15        :        :                   :         
 GND                          : 16        : gnd    :                   :         :           :                
 VCCINT                       : 17        : power  :                   : 3.3V    :           :                
 GND*                         : 18        :        :                   :         :           :                
-GND*                         : 19        :        :                   :         :           :                
+ColorCarrier_opt_o           : 19        : output : 3.3-V LVTTL       :         :           : Y              
 SEL_SNES_1CHIP               : 20        : input  : 3.3-V LVTTL       :         :           : Y              
 ColorCarrier_o               : 21        : output : 3.3-V LVTTL       :         :           : Y              
 MCLK_o                       : 22        : output : 3.3-V LVTTL       :         :           : Y              
