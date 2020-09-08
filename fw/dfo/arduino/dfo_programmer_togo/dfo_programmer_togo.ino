@@ -83,7 +83,7 @@ void loop() {
     Wire.beginTransmission(i2c_cdce913_addr);
     Wire.write(BASE_ADDR);
     Wire.write(NUM_OF_REGS);
-    for (idx = 0; idx < 32; idx++) {
+    for (idx = 0; idx < NUM_OF_REGS; idx++) {
       switch (idx) {
         case I2C_ADDR_REG:
           Wire.write((dfo_regs[idx] & 0xfc) | (i2c_cdce913_addr & 0x03)); // make sure to not overwrite current slave address
@@ -113,7 +113,7 @@ void loop() {
   Wire.write(BASE_ADDR);
   Wire.endTransmission();
   
-  Wire.requestFrom((int) i2c_cdce913_addr,(int) 33);
+  Wire.requestFrom((int) i2c_cdce913_addr,(int) NUM_OF_REGS + 1);
   idx = (int) Wire.read(); // first value is number of data
   if (serial_available) {
       Serial.print(" - Number of bytes returned: ");
@@ -157,7 +157,7 @@ void loop() {
     digitalWrite(LED_PIN, HIGH);
   }
 
-  if (error == 0 && idx == 32) {
+  if (error == 0 && idx == NUM_OF_REGS) {
     if (serial_available) Serial.print("... done!\n");
     digitalWrite(13, LOW);
     delay(100);
@@ -165,7 +165,7 @@ void loop() {
   } else {
     if (serial_available) {
       Serial.print("... VERIFICATION ERROR!\n");
-      if (idx != 32) Serial.print("Number of Bytes not as expected!\n");
+      if (idx != NUM_OF_REGS) Serial.print("Number of Bytes not as expected!\n");
       if (error_reg > -1) {
         Serial.print("First register error at 0x");
         Serial.print(error_reg, HEX);
