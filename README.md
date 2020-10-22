@@ -30,14 +30,50 @@ This PCB, its idea and design, is a confluence of multiple projects. All credits
 - **PCB design** by borti4938
   Copyright (c) 2019 by Peter Bartmann under GNU GPLv3
 
+### Features and Functions
 
-### Features
+##### In short
 
 - **SuperCIC:** lockout chip replacement 50Hz/60Hz switch cabability
 - **uIGR:** controller input sniffing to perform certain actions like reset or 60Hz and 50Hz switch up on certain combinations
 - **Region Patch:** overrides region protection based on picture processing status reads
 - **DeJitter:** removes jitter on sync for NTSC mode
 - **DFO:** dual frequency oscillator, here used to switch between base clocks for 50Hz, 60Hz video-modes
+
+##### SuperCIC
+
+Hold down the reset button in order to swipe through 50Hz (green LED), 60Hz (red LED) or Auto-Region (yellow LED).
+
+With the sd2snes you are able to pair the SuperCIC with the flash card. Then you'll be able to switch between 60Hz and 50Hz mode. However, you need to have the uIGR, which is master for the region setting, in SuperCIC pass through mode. Some more information is given [below](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID#using-a-modded-snes-with-flashcards).
+
+##### uIGR
+
+The uIGR sniffs the controller inputs directly at the controller port. Therefor it is able to detect certain button combinations. All button combinations are collected in an overview PDF, which is available in [German](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/blob/master/fw/uIGR/Manuals/uIGR_Anleitung.pdf) and [English](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/blob/master/fw/uIGR/Manuals/uIGR_Manual.pdf). Here are the most important ones:
+
+- Region forcing:
+  - 60Hz: L + R + Select + A
+  - 50Hz: L + R + Select + Y
+  - Auto: L + R + Select + B
+  - S-CIC pass through: L + R + Select + D-pad left OR L + R + Select + D-pad right
+- Reset:
+  - simple reset: L + R + Select + Start
+  - double reset (back to main menu of sd2snes): L + R + Select + X
+
+##### Region Patch
+
+Overwrites region if game request register $213F, where bit 4 represents the region. Region patching can be disabled (see [uIGR PDFs](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/tree/master/fw/uIGR/Manuals)). You also have to consider switching off the region patch if using non-original cartridges or [flash cards](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID#using-a-modded-snes-with-flashcards) (sd2snes with Pairmode with SuperCIC is not a problem).
+
+##### DeJitter
+
+In NTSC mode the SNES outputs a shorter scanline in non-visible area. This might be an issue for certain TVs if you use pure analog to digital conversion without frame buffer like the OSSC does. DeJitter 'removes' this shorter line by pausing the clock for a few cycles.
+
+As drawback this mechanic varies output timing a bit, however the inaccuracy is neglectable when comparing it to clock variations throughout different consoles.
+
+At the moment, DeJitter is enabled by default and can only be disabled by setting jumper _SJ31_.
+
+##### DFO
+
+Short for dual frequency oscillator. Actually in combination with the CPLD this allows to switch between three output clocks plus two color carrier clocks. If modding board is correctly installed, there is nothing special to consider here.
 
 
 ### PCB Description
