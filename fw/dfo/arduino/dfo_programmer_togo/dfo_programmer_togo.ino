@@ -49,7 +49,7 @@ void setup() {
 
 
 void loop() {
-  int idx;
+  int idx, jdx;
   byte i2c_cdce913_addr = 0;
   byte bytebuf, compare_byte;
   int error = -1;
@@ -79,24 +79,27 @@ void loop() {
   if (serial_available) Serial.print("Write registers: ");
 
   // write register values
+  idx = 0;
   if (!VERIFY_ONLY) {
-    Wire.beginTransmission(i2c_cdce913_addr);
-    Wire.write(BASE_ADDR);
-    Wire.write(NUM_OF_REGS);
-    for (idx = 0; idx < NUM_OF_REGS; idx++) {
-      switch (idx) {
-        case I2C_ADDR_REG:
-          Wire.write((dfo_regs[idx] & 0xfc) | (i2c_cdce913_addr & 0x03)); // make sure to not overwrite current slave address
-          break;
-        case EEWRITE_REG:
-          Wire.write(dfo_regs[idx] & ~(1<<EEWRITE_BIT));  // do not set the EEWRITE_BIT
-          break;
-        default:
-          Wire.write(dfo_regs[idx]);
+    for (jdx=0; jdx < 2; jdx++) {
+      Wire.beginTransmission(i2c_cdce913_addr);
+      Wire.write(BASE_ADDR + jdx*NUM_OF_REGS/2);
+      Wire.write(NUM_OF_REGS/2);
+      for (idx = 0; idx < NUM_OF_REGS/2; idx++) {
+        switch (jdx*NUM_OF_REGS/2 + idx) {
+          case I2C_ADDR_REG:
+            Wire.write((dfo_regs[jdx*NUM_OF_REGS/2 + idx] & 0xfc) | (i2c_cdce913_addr & 0x03)); // make sure to not overwrite current slave address
+            break;
+          case EEWRITE_REG:
+            Wire.write(dfo_regs[jdx*NUM_OF_REGS/2 + idx] & ~(1<<EEWRITE_BIT));  // do not set the EEWRITE_BIT
+            break;
+          default:
+            Wire.write(dfo_regs[jdx*NUM_OF_REGS/2 + idx]);
+        }
+        if (serial_available) Serial.print(".");
       }
-      if (serial_available) Serial.print(".");
+      Wire.endTransmission();    // stop transmitting
     }
-    Wire.endTransmission();    // stop transmitting
     if (serial_available) Serial.print(" done!\n");
     
     digitalWrite(LED_PIN, LOW);
@@ -108,55 +111,51 @@ void loop() {
 
   // verify registers
   if (serial_available) Serial.print("Verify registers: ... \n");
-    
-  Wire.beginTransmission(i2c_cdce913_addr); 
-  Wire.write(BASE_ADDR);
-  Wire.endTransmission();
-  
-  Wire.requestFrom((int) i2c_cdce913_addr,(int) NUM_OF_REGS + 1);
-  idx = (int) Wire.read(); // first value is number of data
-  if (serial_available) {
-      Serial.print(" - Number of bytes returned: ");
-      Serial.print(idx, DEC);
-      Serial.print("\n");
-  }
+
   idx = 0;
   error = 0;
-  while (Wire.available()) {
-    bytebuf = Wire.read(); // receive a byte as character
-    if (serial_available) {
-        Serial.print(" - Value read at reg 0x");
-        Serial.print(idx, HEX);
-        Serial.print(": 0x");
-        Serial.print(bytebuf, HEX);
-    }
-    if ((idx != 0) && ((idx < 7) || (idx > 15))) {
-      switch (idx) {
-        case I2C_ADDR_REG:
-          compare_byte = (dfo_regs[idx] & 0xfc) | (i2c_cdce913_addr & 0x03);
-          break;
-        case EEWRITE_REG:
-          compare_byte = (dfo_regs[idx] & ~(1<<EEWRITE_BIT));  // EEWRITE_BIT should not be set, so compare to reg val with cleared bit
-          break;
-        default: compare_byte = dfo_regs[idx];
-      }
-      error |= (bytebuf != compare_byte);
+  for (jdx=0; jdx < 2; jdx++) {
+    Wire.beginTransmission(i2c_cdce913_addr); 
+    Wire.write(BASE_ADDR + jdx*NUM_OF_REGS/2);
+    Wire.endTransmission();
+    
+    Wire.requestFrom((int) i2c_cdce913_addr,(int) NUM_OF_REGS/2 + 1);
+    (int) Wire.read(); // first value is number of data
+    while (Wire.available()) {
+      bytebuf = Wire.read(); // receive a byte as character
       if (serial_available) {
-        Serial.print(" (0x");
-        Serial.print(compare_byte, HEX);
-        Serial.print(" expected)\n");
+          Serial.print(" - Value read at reg 0x");
+          Serial.print(idx, HEX);
+          Serial.print(": 0x");
+          Serial.print(bytebuf, HEX);
       }
-    } else {
-      if (serial_available) Serial.print(" (not evaluated as reg is read only)\n");
+      if ((idx != 0) && ((idx < 7) || (idx > 15))) {
+        switch (idx) {
+          case I2C_ADDR_REG:
+            compare_byte = (dfo_regs[idx] & 0xfc) | (i2c_cdce913_addr & 0x03);
+            break;
+          case EEWRITE_REG:
+            compare_byte = (dfo_regs[idx] & ~(1<<EEWRITE_BIT));  // EEWRITE_BIT should not be set, so compare to reg val with cleared bit
+            break;
+          default: compare_byte = dfo_regs[idx];
+        }
+        error |= (bytebuf != compare_byte);
+        if (serial_available) {
+          Serial.print(" (0x");
+          Serial.print(compare_byte, HEX);
+          Serial.print(" expected)\n");
+        }
+      } else {
+        if (serial_available) Serial.print(" (not evaluated as reg is read only)\n");
+      }
+      if ((error != 0) && (error_reg < 0)) error_reg = idx;
+      idx++;
+      delay(10);
+      digitalWrite(LED_PIN, LOW);
+      delay(10);
+      digitalWrite(LED_PIN, HIGH);
     }
-    if ((error != 0) && (error_reg < 0)) error_reg = idx;
-    idx++;
-    delay(10);
-    digitalWrite(LED_PIN, LOW);
-    delay(10);
-    digitalWrite(LED_PIN, HIGH);
   }
-
   if (error == 0 && idx == NUM_OF_REGS) {
     if (serial_available) Serial.print("... done!\n");
     digitalWrite(13, LOW);
