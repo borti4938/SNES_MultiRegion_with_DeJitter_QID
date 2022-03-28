@@ -122,7 +122,7 @@ These are just general descriptions of the in- and outputs. Please refer to the 
 - **SJ61:** distributes clock output to cartridge slot pin 1. This jumper **must not** be closed in 1Chip-SNES. Side note: if SJ32 is open, SJ61 has to open, too.
 - **SJ63:** (since SMR20200323) decides which color carrier is forwarded to output. This jumper has two option; you must not close both jumpers!
   - SJ63.1: (marked with a dot) outputs color carrier derived from non-dejittered clock.  
-    Use this if you have a problem with discoloring on composite sync or S-Video ([issue thread at shmups](https://shmups.system11.org/viewtopic.php?p=1389666#p1389666))  
+    Use this if you have a problem with discoloring on composite video or S-Video ([issue thread at shmups](https://shmups.system11.org/viewtopic.php?p=1389666#p1389666))  
     Btw: this is default for all earlier version of the modding board flashed with the current firmware. If you need the other color carrier, just go back to a previous version.
   - SJ63.2: outputs color carrier derived from dejittered clock.  
     (I personally need to use this clock as my TV does not like the color carrier from non-dejittered clock)
