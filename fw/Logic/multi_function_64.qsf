@@ -25,7 +25,7 @@
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		multi_func_legacy_assignment_defaults.qdf
+#		multi_function_64_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -37,9 +37,9 @@
 
 
 set_global_assignment -name FAMILY MAX7000AE
-set_global_assignment -name DEVICE "EPM7032AETC44-10"
-set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:18:56  AUGUST 14, 2019"
+set_global_assignment -name DEVICE "EPM7064AETC44-10"
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1.02"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:07:17  APRIL 01, 2022"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1.02"
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
 
@@ -63,7 +63,6 @@ set_location_assignment PIN_12 -to NPALMODE[0]
 set_location_assignment PIN_37 -to MCLK_base_i
 set_location_assignment PIN_27 -to MCLK_PAL_ext_i
 set_location_assignment PIN_22 -to MCLK_o
-set_location_assignment PIN_25 -to dummy
 set_location_assignment PIN_19 -to ColorCarrier_opt_o
 set_location_assignment PIN_21 -to ColorCarrier_o
 
@@ -73,7 +72,7 @@ set_location_assignment PIN_34 -to CSYNC_o[1]
 set_location_assignment PIN_13 -to CSYNC_o[0]
 
 
-set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files/multi_func_legacy
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files/multi_func
 set_global_assignment -name TOP_LEVEL_ENTITY snes_mult_func
 set_global_assignment -name VERILOG_FILE rtl/snes_mult_func.v
 set_global_assignment -name VERILOG_FILE rtl/snes_dejitter_mod.v
@@ -83,3 +82,4 @@ set_global_assignment -name MAX7000_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS OFF
 set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING OFF
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 44

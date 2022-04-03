@@ -57,7 +57,7 @@
  ---------------------------------------------------------------------------------
 
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1.02 SJ Web Edition
-CHIP  "multi_func_legacy"  ASSIGNED TO AN: EPM7032AETC44-10
+CHIP  "multi_function_64"  ASSIGNED TO AN: EPM7064AETC44-10
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ ColorCarrier_o               : 21        : output : 3.3-V LVTTL       :         
 MCLK_o                       : 22        : output : 3.3-V LVTTL       :         :           : Y              
 GND*                         : 23        :        :                   :         :           :                
 GND                          : 24        : gnd    :                   :         :           :                
-dummy                        : 25        : output : 3.3-V LVTTL       :         :           : Y              
+GND*                         : 25        :        :                   :         :           :                
 TCK                          : 26        : input  : 3.3-V LVTTL       :         :           : N              
 MCLK_PAL_ext_i               : 27        : input  : 3.3-V LVTTL       :         :           : Y              
 NPARD                        : 28        : input  : 3.3-V LVTTL       :         :           : Y              

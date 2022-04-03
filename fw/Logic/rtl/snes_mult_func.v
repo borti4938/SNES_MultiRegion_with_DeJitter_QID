@@ -28,7 +28,7 @@
 // with discrete logic elements.
 //
 
-`define LEGACY // modding board versions V20190509 and earlier
+// `define LEGACY // modding board versions V20190509 and earlier
 
 module snes_mult_func(
   input NPARD,

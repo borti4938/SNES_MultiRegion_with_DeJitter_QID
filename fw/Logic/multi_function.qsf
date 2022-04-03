@@ -40,7 +40,7 @@ set_global_assignment -name FAMILY MAX7000AE
 set_global_assignment -name DEVICE "EPM7032AETC44-10"
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:07:46  APRIL 07, 2019"
-set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1.02"
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
 
 set_location_assignment PIN_28 -to NPARD
