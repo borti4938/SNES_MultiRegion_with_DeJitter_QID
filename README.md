@@ -144,11 +144,39 @@ Use a PICKit, TL866CS or similar programmer.
 
 ![](./pics/programmer_microchip_uc.jpg)
 
+- **U3:** _ATMEL_ CPLDs: ATF1502ASV or ATF1504ASV(L) CPLD with clock switch, region patch and de-jitter firmware. Pre-build firmware only supports SMR20190813 (and later) modding boards.
 
-- **U3:** EPM7032 CPLD with clock switch, region patch and de-jitter firmware. You have to choose the right one depending on your modding board version.
+  - [ATF1502ASV](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/raw/master/fw/Logic/output_files/multi_func_atmel/multi_function.svf)
+  - [ATF1504ASV(L)](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/raw/master/fw/Logic/output_files/multi_func_atmel/multi_function_64.svf)
+  
+Use an OpenOCD compatible JTAG programmer. I tested the workflow with an [Adafruit FT232H Breakout Board](https://www.adafruit.com/product/2264), yet you can use any other JTAG programmer that supports 3.3V IO signal levels.
 
-  - [Version SMR20190813 (and later)](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/blob/master/fw/Logic/output_files/multi_func/multi_function.pof?raw=true)
-  - [Version SMR20190603 and earlier](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/blob/master/fw/Logic/output_files/multi_func_legacy/multi_func_legacy.pof?raw=true)
+![](./pics/jtag_ft2232h_based.jpg)
+
+1. Create an openocd.conf that matches your JTAG programmer. A configuration files for FT2232-based and FT2232H programmers are found in the [firmware folder](./fw/Logic/output_files/multi_func_atmel/). They use following standard pinout for data signals:  
+  - ADBUS0 -> TCK
+  - ADBUS1 -> TDI
+  - ADBUS2 -> TDO
+  - ADBUS3 -> TMS
+2. Connect the JTAG programmer the modding board, except for Vref! Power the board via 5V during programming.  This can be done by using the DFO programmer connected with V_target set to 5V (or 3.3V) if the modding board is not installed yet (other power solutions are possible, but please use the 5V power supply rail to not harm the DC converters. Or you can simply switch on the SNES for programming. Of course, the CPLD can be also flashed prior to assembly if you have a proper adapter at hand.
+3. Initialize the JTAG connection:  
+~~~~
+openocd -f openocd-ft2232h.conf
+~~~~  
+OpenOCD should detect the JTAG chain without any errors. If you have any, just double-check if everything is well connected and the CPLD is powered.
+
+4. When successful, open another terminal to interact with openocd and program the chip:  
+~~~~
+telnet localhost 4444
+> svf <full_path_to_svf_file>
+~~~~  
+Wait for the program to be finished.
+
+- **U3:** _obsolete Altera / intelFPGA CPLDs_: EPM7032 or EPM7064 CPLD with clock switch, region patch and de-jitter firmware. You have to choose the right one depending on your modding board version.
+
+  - [Version SMR20190813 (and later), EPM7032](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/raw/master/fw/Logic/output_files/multi_func/multi_function.pof)
+  - [Version SMR20190813 (and later), EPM7032](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/raw/master/fw/Logic/output_files/multi_func/multi_function_64.pof)
+  - [Version SMR20190603 and earlier](https://github.com/borti4938/SNES_MultiRegion_with_DeJitter_QID/raw/master/fw/Logic/output_files/multi_func_legacy/multi_func_legacy.pof)
 
 Use an Altera USB Blaster (or clone) for flashing the firmware.
 
