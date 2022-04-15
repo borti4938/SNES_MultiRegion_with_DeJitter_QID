@@ -117,7 +117,9 @@ These are just general descriptions of the in- and outputs. Please refer to the 
 
 - **SJ11:** alternative clock for the SuperCIC; close this jumper if you don't connect the _Clk.CIC_ pad in order to use the clock meant for the CIC-key
 - **SJ21:** close this jumper if you use a LED with a common anode. Otherwise leave this jumper untouched
-- **SJ31:** closing this jumper permanently disables the de-jitter function. This solder jumper is a bit larger to give the installer the option to connect a slide switch here (_speed-runner discussions_). There is also an issue opened in [marqs85 DeJitter repository](https://github.com/marqs85/snes_dejitter/issues/9) reported by [BambooShadow](https://github.com/BambooShadow), which states that composite video and s-video becomes flickery. Maybe this is related to _SJ63 setting_, maybe not - I'm not sure. In any case, you can disable DeJitter if this is also an issue for you.
+- **SJ31:** closing this jumper permanently disables the de-jitter function. This solder jumper is a bit larger to give the installer the option to connect a slide switch here (_speed-runner discussions_).  
+   - There is also an issue opened in [marqs85 DeJitter repository](https://github.com/marqs85/snes_dejitter/issues/9) reported by [BambooShadow](https://github.com/BambooShadow), which states that composite video and s-video becomes flickery. This is probably related to the S-RGB encoder chip on SNS-CPU-RGB-01 and later models (PAL: SNSP-CPU-1CHIP-01 and later). In any case, you can disable DeJitter if this is also an issue for you.  
+   - I personally recommend to turn DeJitter off. Turn DeJitter only on if you use simple line doublers like the OSSC and if you have any issue on getting a proper picture.
 - **SJ32:** short this jumper if the board is installed in a non-1Chip-SNES (SNES Jr. / SNES2 are also 1Chip-SNES)
 - **SJ61:** distributes clock output to cartridge slot pin 1. This jumper **must not** be closed in 1Chip-SNES. Side note: if SJ32 is open, SJ61 has to open, too.
 - **SJ63:** (since SMR20200323) decides which color carrier is forwarded to output. This jumper has two option; you must not close both jumpers!
@@ -190,6 +192,8 @@ After assembly, the modding board has to be powered for flashing the firmware. T
 ![](./pics/dfo_pcb.jpg)
 
 Use the DFO programmer to flash the PLL. The [DFO readme](./fw/dfo/SOURCE.md) describes how to properly perform the flashing.
+I alternatively wrote a [program for Arduino boards](./fw/dfo/arduino/) to flash the CDCE913 with the I2C interface of the Arduino.
+I tested the code with an Arduino Nano and Arduino Nano Every.
 
 
 ### Installation Notes
