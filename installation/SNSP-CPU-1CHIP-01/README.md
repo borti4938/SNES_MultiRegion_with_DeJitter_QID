@@ -53,6 +53,14 @@ Note that this installation guide shows pictures with a prototype version of the
 
 Color carrier is switched within the S-CPUN. There is no need to do anything in addition to the steps above.
 
+However, if you wish to use the color carrier derived from the continuous clock, you have to perform the following steps:
+
+- move R4 from SNES mainboard to _R62_ on the modding board
+- connect pad _CClk.o_ with right pad of R4 footprint
+- Close SJ63.2 jumper
+
+![](./CClk_mod.jpg)
+
 ### Buffered CSYNC to the MultiOut
 
 Other than the NTSC variant of the SNES, the PAL version has 12V at the MultiOut pin 3 instead of CSYNC. However, it's not a big deal to change that.
