@@ -44,6 +44,8 @@
   ![](./csync.jpg)
 - connect one of the _/Vmode_ pad to the lifted pin 9 of the S-RGB
 - Connect _/CS.o (buf)_ to pin 3 of the MultiOut
+  - leave _SJ93_ open if you have an attenuation resistor in your RGB cable for csync (which is usually the case in CSYNC cables)
+  - (not documented) close _SJ93_ if you opt for having _CS.o (buf)_ replacing luma (pin 7 of MultiOut) or composite video (pin 9 of MultiOut)
 - leave _SJ32_ and _SJ61_  open!
 
 ### Color Carrier

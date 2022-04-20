@@ -19,7 +19,7 @@
 - lift pin 7 of S-RGB  
   ![](./S-RGB.jpg)
 
-- remove R17  
+- remove R17 if you are going to use a RGB cable with sync on raw csync  
   ![](./csync_buf.jpg)
 
 ### Installation of PCB
@@ -43,6 +43,8 @@
 - connect one of the _/CS.o (raw)_ pads to the lifted pin 7 of the S-RGB
 - connect _/CS.o (buf)_ to left footprint of R17 as shown in picture of R17 removal above
 - either close _SJ11_ or connect _Clk.CIC_ to CIC-lock footprint pin 7
+  - leave _SJ93_ open if you have an attenuation resistor in your RGB cable for csync (which is usually the case in CSYNC cables)
+  - (not documented on preparation part) close _SJ93_ if you opt for having _CS.o (buf)_ replacing luma (pin 7 of MultiOut) or composite video (pin 9 of MultiOut)
 - close _SJ32_ and _SJ61_  
   ![](./jumper.jpg)
 

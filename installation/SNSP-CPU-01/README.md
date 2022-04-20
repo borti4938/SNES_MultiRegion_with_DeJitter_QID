@@ -55,6 +55,7 @@ Personally, I prefer having csync at pin 7 of the MultiOut. By default, this is 
   ![](./luma_disconnected.jpg)
 - Connect _/CS.o (buf)_ to the MultiOut pin 7  
   ![](csync_buf.jpg)
+- close _SJ93_ for proper signal attenuation
 
 
 

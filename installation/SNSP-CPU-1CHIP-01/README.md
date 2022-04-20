@@ -67,9 +67,11 @@ Other than the NTSC variant of the SNES, the PAL version has 12V at the MultiOut
 
 - remove R28 and optionally D1
 - Connect the upper pin of _/CS.o (buf)_ to the top footprint pad of R28 (or to the MultiOut pin 3)  
+  - leave _SJ93_ open if you have an attenuation resistor in your RGB cable for csync (which is usually the case in CSYNC cables)   
   ![](./CSYNC_buf.jpg)
 
-You can also connect the buffered output to pin 7 (for use with _sync-on-luma_ cables). Just remove R19 instead of R28. Same if you want to wire the buffered output to pin 9 (for use with _sync-on-composite video_ cables). Just remove R18 instead of R28.
+You can also connect the buffered output to pin 7 (for use with _sync-on-luma_ cables). Just remove R19 instead of R28. Same if you want to wire the buffered output to pin 9 (for use with _sync-on-composite video_ cables). Just remove R18 instead of R28.  
+In both cases, close _SJ93_ for proper signal attenuation.
 
 ### CSYNC and 'my' RGB bypass PCB
 
